@@ -1,0 +1,17 @@
+<h1>게시글 수정</h1>
+<form action='/posts/update/<%= @post.id %>' method='post'>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form-group1">
+        <label class="col-form-label col-form-label-lg" for="inputLarge">제목</label>
+        <input class="form-control form-control-lg" type="text" placeholder="" id="inputLarge" name='post_title' value=<%= @post.title %>>
+    </div>
+    <div class="form-group1">
+      <label for="exampleTextarea">내용</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3" name="post_content"><%= @post.content %></textarea>
+    </div>
+    <div class="form-group1">
+      <label class="col-form-label col-form-label-sm" for="inputSmall"># 태그</label>
+      <input class="form-control form-control-sm" type="text" placeholder="#해시태그는 ,로 구분해주세요" id="inputSmall" name='hashtags' value=<% @post.hashtags.each do |tag|%><%= tag.name%><%end%>>
+    </div>
+    <button type="submit" class="btn btn-primary">다시 저장</button>
+</form>
